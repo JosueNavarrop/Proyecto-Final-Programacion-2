@@ -1,0 +1,126 @@
+﻿@page "/Peliculas"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using FrontendFinalP.Client.Deta
+@inject HttpClient Http
+@inject NavigationManager Navegador
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using FrontendFinalP.Shared
+@using System.Text.Json;
+@attribute [Authorize]
+
+<PageTitle>Peliculas</PageTitle>
+
+<h1>Peliculas</h1>
+
+<div style="text-align: right;" class="form-group row mb-1">
+    <div class="col-sm-12">
+        <button class="btn btn-success btn-lg" href="/peliculasForm" @onclick=Irapeli>Nueva Pelicula </button>
+    </div>
+
+</div>
+
+<div class="form-inline">
+    <label class="sr-only" for="nombre-filtro">Buscar pelicula</label>
+    <input class="form-control mb-2 mr-sm-2" type="text" @bind-value="searchTerm" 
+            placeholder="Buscar pelicula por Nombre"/>
+    <button type="button" class="btn btn-outline-primary mr-sm-4 mb-4" @onclick="Search">Buscar</button>
+</div>
+
+
+<div style="text-align: right;" class="dropdown mr-sm-4 mb-4">
+    <label class="sr-only" for="nombre-DROPDOWN">Busque Peliculas por su Genero Favorito:</label>
+    <select class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" @bind="selectedGenre">
+        <option value="">Todos los géneros</option>
+        @foreach (var genre in generos)
+        {
+            <option value="@genre">@genre</option>
+        }
+    </select>
+</div>
+
+
+
+@if (Search != null)
+{
+    @if (oResp != null && oResp.Data != null)
+    {
+       <div class="d-flex flex-wrap gap-2">
+            @foreach (var oElement in oResp.Data.Where(p => p.Titulo.Contains(searchTerm) && (selectedGenre == "" || p.Genero == selectedGenre)))
+            {
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://blogs.unsw.edu.au/nowideas/files/2017/03/invertir-cine.jpg">
+                    <div class="card-body">
+@*                        <h5 class="card-title">Numero: @oElement.Id</h5>*@
+                        <h5 class="card-title">Titulo: @oElement.Titulo</h5>
+                        <h5 class="card-title">Año: @oElement.Año</h5>
+                        <h5 class="card-title">Director: @oElement.Director</h5>
+                        <h5 class="card-title">Genero: @oElement.Genero</h5>
+@*                                     <h5 class="card-title">Poster: @oElement.Poster</h5>*@
+                        <div class="d-flex gap-5">
+                            <a class="btn btn-outline-primary" href="/peliculasForm/@oElement.Id">Editar</a>
+
+                            <a class="btn btn-outline-danger" href="/eliminarPelicula/@oElement.Id">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    }
+}
+
+
+@code {
+    [Parameter]
+    public string Titulo { get; set; }
+    Pelicula oPeli = new Pelicula();
+    public string URL = "https://localhost:7209/api/Peliculas";
+
+    private async Task Irapeli()
+    {
+        Navegador.NavigateTo("/peliculasForm");
+    }
+
+    List<string> generos = new List<string>();
+
+    string selectedGenero = "";
+
+    List<Pelicula> products = new List<Pelicula>();
+
+    string searchTerm = "";
+    string selectedGenre = "";
+
+    async Task Search()
+    {
+        var pelicula = Http.PutAsJsonAsync<Deta.Pelicula>(URL, oPeli);
+        HttpClient client = new HttpClient();
+        oResp = await client.GetFromJsonAsync<Deta.Respuesta<List<Pelicula>>>(URL);
+
+
+        //Para DROPDOWN
+        if (!string.IsNullOrEmpty(selectedGenre))
+        {
+            URL += $"?genero={selectedGenre}";
+        }
+        oResp = await Http.GetFromJsonAsync<Deta.Respuesta<List<Pelicula>>>(URL);
+
+    }
+
+    //
+
+    Respuesta<object> oBuscarpeli = new Respuesta<object>();
+    Respuesta<Pelicula> oRespPelicula = new Respuesta<Pelicula>();
+
+
+    public Deta.Respuesta<List<Pelicula>> oResp = new Deta.Respuesta<List<Pelicula>>();
+    protected override async Task OnInitializedAsync()
+    {
+        oResp = await Http.GetFromJsonAsync<Deta.Respuesta<List<Pelicula>>>(URL);
+
+
+        oResp = await Http.GetFromJsonAsync<Deta.Respuesta<List<Pelicula>>>(URL);
+        generos = oResp.Data.Select(p => p.Genero).Distinct().ToList();
+    }
+}

@@ -1,0 +1,44 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+
+        <div class="top-row px-4 auth">
+            <LoginDisplay />
+            <AuthorizeView>
+                <Authorized>
+                    <a href="authentication/profile">Hola, @context.User.Identity?.Name!</a>
+                    <button class="nav-link btn btn-link" @onclick="BeginSignOut">Cerrar Sesion</button>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="authentication/register">Registrar</a>
+
+                    <a href="authentication/login">Iniciar Sesion</a>
+
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
+    }
+}

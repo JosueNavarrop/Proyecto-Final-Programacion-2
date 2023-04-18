@@ -1,0 +1,69 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = FrontendFinalP.Client
+build_property.RootNamespace = FrontendFinalP.Client
+build_property.ProjectDir = C:\Users\User\Desktop\Proyecto Final ProgII JOSUE NAVARRO\FrontendFinalP\FrontendFinalP\Client\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\Proyecto Final ProgII JOSUE NAVARRO\FrontendFinalP\FrontendFinalP\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/AggPelisForm.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdnUGVsaXNGb3JtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/Authentication.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/ContenidoConfidencial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVuaWRvQ29uZmlkZW5jaWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/EliminarPeli.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWxpbWluYXJQZWxpLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Pages/Peliculas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVsaWN1bGFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Shared/Navbar.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdmJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Shared/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFJlZGlyZWN0VG9Mb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-42snielh9f
+
+[C:/Users/User/Desktop/Proyecto Final ProgII JOSUE NAVARRO/FrontendFinalP/FrontendFinalP/Client/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-i46ok13n9u

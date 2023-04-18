@@ -1,0 +1,100 @@
+﻿@page "/peliculasForm"
+@page "/peliculasForm/{Id:int}"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using FrontendFinalP.Client.Deta
+@inject HttpClient Http
+@inject NavigationManager Navegador
+
+<PageTitle>Agregar Nueva Pelicula</PageTitle>
+
+<h3>Agregue Nueva Pelicula</h3>
+
+<EditForm Model="@oPeli" enctype="multipart/form-data">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="container-fluid" enctype="multipart/form-data">
+
+        <div class="form-group row mb-1">
+            <label class="col-sm-3">Titulo</label>
+            <div class="col-sm-9">
+                <InputText id="titulo" class="form-control" @bind-Value="@oPeli.Titulo"></InputText>
+            </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label class="col-sm-3">Año</label>
+            <div class="col-sm-9">
+                <InputText id="año" class="form-control" @bind-Value="@oPeli.Año"></InputText>
+            </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label class="col-sm-3">Director</label>
+            <div class="col-sm-9">
+                <InputText id="director" class="form-control" @bind-Value="@oPeli.Director"></InputText>
+            </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label class="col-sm-3">Genero</label>
+            <div class="col-sm-9">
+                <InputText id="genero" class="form-control" @bind-Value="@oPeli.Genero"></InputText>
+            </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <label class="col-sm-3">Poster</label>
+            <div class="col-sm-9">
+                <InputText id="pster" class="form-control" @bind-Value="@oPeli.Poster"></InputText>
+            </div>
+        </div>
+
+        <div class="form-group row mb-1">
+            <div class="col-sm-12">
+                <button class="btn btn-primary" @onclick="Save">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int ID { get; set; }
+    public string URL = "https://localhost:7209/api/Peliculas";
+    Pelicula oPeli = new Pelicula();
+
+
+    Respuesta<object> oResp = new Respuesta<object>();
+    Respuesta<Pelicula> oRespPelicula = new Respuesta<Pelicula>();
+
+    private async Task Save()
+    {
+        if (ID != 0)
+        {
+            var response = await Http.PutAsJsonAsync<Pelicula>(URL, oPeli);
+            oResp = response.Content.ReadFromJsonAsync<Respuesta<object>>().Result;
+
+        }
+        else
+        {
+            var response = await Http.PostAsJsonAsync<Pelicula>(URL, oPeli);
+            oResp = response.Content.ReadFromJsonAsync<Respuesta<object>>().Result;
+        }
+        Navegador.NavigateTo("/Peliculas");
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (ID != 0)
+        {
+            oRespPelicula = await Http.GetFromJsonAsync<Respuesta<Pelicula>>(URL + "/" + ID);
+
+            oPeli = oRespPelicula.Data;
+        }
+    }
+
+}

@@ -1,0 +1,36 @@
+﻿@page "/eliminarPelicula/{Id:int}"
+
+@using System.Net.Http
+@using System.Net.Http.Json
+@using FrontendFinalP.Client.Deta
+@inject HttpClient Http
+@inject NavigationManager Navegador
+
+
+<h3>EliminarPelicula</h3>
+
+<p>¿Desea Eliminar La pelicula?</p>
+
+<div>
+    <button class="btn btn-primary" @onclick="Cancelar">Cancelar</button>
+    <button class="btn btn-danger" @onclick="Eliminar">Confirmar</button>
+</div>
+
+@code {
+    [Parameter]
+
+    public int Id { get; set; }
+    public string URL = "https://localhost:7209/api/Peliculas";
+    Respuesta<object> oResp = new Respuesta<object>();
+
+    private void Cancelar() => Navegador.NavigateTo("/Peliculas");
+
+    private async Task Eliminar()
+    {
+        var response = await Http.DeleteAsync(URL + "/" + Id);
+
+        oResp = response.Content.ReadFromJsonAsync<Respuesta<object>>().Result;
+
+        Navegador.NavigateTo("/Peliculas");
+    }
+}

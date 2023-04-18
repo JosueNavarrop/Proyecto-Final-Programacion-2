@@ -1,0 +1,32 @@
+﻿@page "/"
+
+<PageTitle>Bienvenido</PageTitle>
+@inject NavigationManager Navegador
+@inherits LayoutComponentBase
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <h1 class="text-center my-5">Bienvenido a la página de la película!</h1>
+            <img src="https://mario.nintendo.com/static/d783068682f98d6cfec666c747a27793/d6e64/mario.png" class="img-fluid rounded mx-auto d-block" alt="Poster de la película">
+            <div class="image-container" alt="Poster de la película"></div>
+            <h2 class="text-center my-4">Josué Alejandro Navarro Peralta</h2>
+            <p class="lead text-center">2022-0077</p>
+            <div class="text-center my-4">
+                <a href="/Peliculas" @onclick=Irapeli class="btn btn-outline-success btn-lg">Ir a Peliculas!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@code{
+
+
+    private async Task Irapeli()
+    {
+        Navegador.NavigateTo("/peliculasForm");
+    }
+
+}

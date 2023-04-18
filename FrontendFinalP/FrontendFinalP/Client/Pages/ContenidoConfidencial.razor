@@ -1,0 +1,16 @@
+﻿@page "/enlacepagina"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using FrontendFinalP.Shared
+@attribute [Authorize]
+@inject HttpClient Http
+
+<h3>ContenidoConfidencial</h3>
+
+<NombreComponente/>
+
+
+@code {
+
+}
